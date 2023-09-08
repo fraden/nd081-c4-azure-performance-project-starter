@@ -30,11 +30,11 @@ view_manager = stats.view_manager
 # Logging
 # logger = # TODO: Setup logger
 logger = logging.getLogger('__name__')
-handler = AzureLogHandler(connection_string='InstrumentationKey=e98ea62e-dc00-43c7-b1de-191339744461;IngestionEndpoint=https://westus-0.in.applicationinsights.azure.com/;LiveEndpoint=https://westus.livediagnostics.monitor.azure.com/')
+handler = AzureLogHandler(connection_string='InstrumentationKey=7c53ae3b-a649-4d6a-a9bc-6fd08f9055e8;IngestionEndpoint=https://westus-0.in.applicationinsights.azure.com/;LiveEndpoint=https://westus.livediagnostics.monitor.azure.com/')
 handler.setFormatter(logging.Formatter('%(traceId)s %(spanId)s %(message)s'))
 logger.addHandler(handler)
 # Logging custom events
-logger.addHandler(AzureEventHandler(connection_string='InstrumentationKey=e98ea62e-dc00-43c7-b1de-191339744461;IngestionEndpoint=https://westus-0.in.applicationinsights.azure.com/;LiveEndpoint=https://westus.livediagnostics.monitor.azure.com/'))
+logger.addHandler(AzureEventHandler(connection_string='InstrumentationKey=7c53ae3b-a649-4d6a-a9bc-6fd08f9055e8;IngestionEndpoint=https://westus-0.in.applicationinsights.azure.com/;LiveEndpoint=https://westus.livediagnostics.monitor.azure.com/'))
 # Setting logging level
 logger.setLevel(logging.INFO)
 
@@ -43,7 +43,7 @@ logger.setLevel(logging.INFO)
 # exporter = # TODO: Setup exporter
 exporter = metrics_exporter.new_metrics_exporter(
   enable_standard_metrics=True,
-  connection_string='InstrumentationKey=e98ea62e-dc00-43c7-b1de-191339744461;IngestionEndpoint=https://westus-0.in.applicationinsights.azure.com/;LiveEndpoint=https://westus.livediagnostics.monitor.azure.com/')
+  connection_string='InstrumentationKey=7c53ae3b-a649-4d6a-a9bc-6fd08f9055e8;IngestionEndpoint=https://westus-0.in.applicationinsights.azure.com/;LiveEndpoint=https://westus.livediagnostics.monitor.azure.com/')
 view_manager.register_exporter(exporter)
 
 
@@ -51,7 +51,7 @@ view_manager.register_exporter(exporter)
 # tracer = # TODO: Setup tracer
 tracer = Tracer(
     exporter=AzureExporter(
-        connection_string='InstrumentationKey=e98ea62e-dc00-43c7-b1de-191339744461;IngestionEndpoint=https://westus-0.in.applicationinsights.azure.com/;LiveEndpoint=https://westus.livediagnostics.monitor.azure.com/'),
+        connection_string='InstrumentationKey=7c53ae3b-a649-4d6a-a9bc-6fd08f9055e8;IngestionEndpoint=https://westus-0.in.applicationinsights.azure.com/;LiveEndpoint=https://westus.livediagnostics.monitor.azure.com/'),
     sampler=ProbabilitySampler(1.0),
 )
 
@@ -62,7 +62,7 @@ app = Flask(__name__)
 # middleware = # TODO: Setup flask middleware
 middleware = FlaskMiddleware(
     app,
-    exporter=AzureExporter(connection_string="InstrumentationKey=e98ea62e-dc00-43c7-b1de-191339744461;IngestionEndpoint=https://westus-0.in.applicationinsights.azure.com/;LiveEndpoint=https://westus.livediagnostics.monitor.azure.com/"),
+    exporter=AzureExporter(connection_string="InstrumentationKey=7c53ae3b-a649-4d6a-a9bc-6fd08f9055e8;IngestionEndpoint=https://westus-0.in.applicationinsights.azure.com/;LiveEndpoint=https://westus.livediagnostics.monitor.azure.com/"),
     sampler=ProbabilitySampler(rate=1.0)
 )
 
